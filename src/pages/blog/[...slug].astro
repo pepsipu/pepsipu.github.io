@@ -1,0 +1,52 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Site from "../../layouts/Site.astro";
+import { getPostInfo, type PostInfo } from "../../lib/post";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post: CollectionEntry<"blog">) => {
+    const postData = getPostInfo(post);
+    return {
+      params: { slug: postData.slug },
+      props: {
+        post,
+        meta: postData,
+      },
+    };
+  });
+}
+type Props = {
+  post: CollectionEntry<"blog">;
+  meta: PostInfo;
+};
+
+const { post, meta } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Site>
+  <section class="py-12">
+    <hr class="mb-5" />
+    <div class="mb-1.5">
+      <div class="text-2xl text-black sm:mb-1">
+        <Fragment set:html={meta.title} />
+      </div>
+      <div class="text-lg leading-snug font-light text-black sm:mb-1">
+        <Fragment set:html={meta.description} />
+      </div>
+      <div class="flex justify-between items-start mb-3 sm:mb-1">
+        <div class="text-sm text-neutral-400">
+          {meta.date}
+        </div>
+        <div class="text-sm text-neutral-400">
+          {meta.tags.join(", ")}
+        </div>
+      </div>
+      <hr class="mb-6 mt-5" />
+      <div class="md-output prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</Site>

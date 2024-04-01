@@ -1,0 +1,86 @@
+import Site from "../layouts/Site.astro";
+import ProjectList from "../components/ProjectList.astro";
+
+export const components = {
+  a: (props) => (
+    <a {...props} class="link">
+      {props.children}
+    </a>
+  ),
+};
+
+export const projects = [
+  {
+    name: "xinOS",
+    href: "https://github.com/pepsipu/xinOS-old",
+    desc: "hyperfast operating system for retro games",
+  },
+  {
+    name: "aski",
+    href: "https://github.com/pepsipu/aski",
+    desc: "high abstraction assembler with types",
+    aside: "Replit Language Jam finalist",
+  },
+  {
+    name: "OSpaint",
+    href: "https://github.com/pepsipu/OSpaint",
+    desc: "MSpaint as an operating system",
+    aside: "CodeDayLA best in class winner",
+  },
+  {
+    name: "warpalloc",
+    href: "https://github.com/pepsipu/warpalloc",
+    desc: "portable memory allocator in assembly",
+  },
+  {
+    name: "ramenbox",
+    href: "https://github.com/pepsipu/ramenbox",
+    desc: "6502 emulator + game console",
+    aside: "CodeDay best hardware winner",
+  },
+];
+
+<Site title="Sammy Hajhamid" description="unfathomably based" openGraph={{
+  title: "Sammy Hajhamid",
+  description: "unfathomably based",
+  url: "https://pepsipu.com",
+  type: "profile",
+  profile: {
+    firstName: "Sammy",
+    lastName: "Hajhamid",
+    username: "pepsipu",
+}}}>
+  <div class="text-xl font-light mb-8 text-black"
+    id="pepsi-is">
+    <span class="g">likes</span> computers <span class="g">&</span> math
+  </div>
+
+  <div class="text-lg space-y-8">
+    I'm currently the course instructor of [595G, Seminar in Computer Security](https://cs595.seclab.cs.ucsb.edu/)
+    at the University of California, Santa Barbara. Previously, I was a founding
+    member and blockchain security auditor at
+    [OtterSec](https://osec.io) and a quantitative researcher at [Zellic](https://zellic.io).
+
+    I'd like to explore as much computer science and pure mathematics as I
+    can. I enjoy making embedded systems, where programmers have creative freedom over
+    hardware, software, and the bridge between the two.
+
+    <div class="leading-snug space-y-4">
+      Some of my favorite personal projects include:
+      <ProjectList projects={projects} />
+    </div>
+
+    I play Capture-the-Flag competitions with the [United States' #1 competitive cybersecurity team](https://ctftime.org/stats/2022/US),
+    [DiceGang](https://dicega.ng), and practice for the [International Cybersecurity Competition](https://en.wikipedia.org/wiki/International_Cybersecurity_Challenge)
+    with the U.S. Cybersecurity Team. Sometimes, I work with government organizations
+    like the United States AFA, Aéroports de Paris, Saudi FCSP and UAE Cybersecurity
+    Council as well as blockchains like [Solana](https://solana.com), [Sui](https://sui.io/), and [Aptos](https://aptoslabs.com) to make the internet safer.
+
+    As a researcher, I've done guest lectures on exploitation at the
+    [HOPE Conference](https://www.youtube.com/watch?v=VYr0Ut8n0bg), Carnegie Mellon University, and EPFL Innovation Park. This summer, I'll
+    be working with the picoCTF team at [Carnegie Mellon University's REU](https://www.cmu.edu/scs/s3d/reuse/). One day, I hope to be a professor.
+
+    I write about interesting technical problems and ideas on [my blog](/blog).
+
+  </div>
+</Site>

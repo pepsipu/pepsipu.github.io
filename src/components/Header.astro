@@ -1,0 +1,69 @@
+---
+const links = [
+  { name: "???", href: "https://pepsi.pw" },
+  { name: "blog", href: "/blog/" },
+];
+const pathname = Astro.url.pathname;
+const link = links.find(({ href }) => pathname.startsWith(href));
+
+let pageTitle: string | null = null;
+if (link) {
+  pageTitle = link.name.charAt(0).toUpperCase() + link.name.slice(1);
+}
+---
+
+<header class="layout-md flex justify-between items-start mb-3 sm:mb-1">
+  <h1 class="font-bold text-black text-2xl">
+    <a href="/">Sammy Hajhamid</a>
+    {
+      pageTitle && (
+        <span class="page-title">
+          <span class="text-neutral-400">—</span>
+          {pageTitle}
+        </span>
+      )
+    }
+  </h1>
+  <nav>
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "hover:text-black",
+            "transition-colors",
+            { "text-black": link.href === pathname },
+          ]}
+        >
+          {link.name}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<style lang="postcss">
+    nav {
+      @apply flex items-start text-neutral-500 justify-end space-x-6 text-lg py-0.5;
+    }
+  
+    .page-title {
+      @apply font-light;
+    }
+  
+    @media (max-width: 580px) {
+      .page-title {
+        @apply block text-xl;
+      }
+  
+      .page-title :first-child {
+        @apply hidden;
+      }
+    }
+  
+    @media (max-width: 420px) {
+      nav {
+        @apply flex-col items-end space-x-0;
+      }
+    }
+  </style>

@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  hr {
+    @apply border-neutral-200;
+  }
+}
+
+@layer components {
+  .layout-md {
+    @apply max-w-screen-md mx-auto px-4 sm:px-6;
+  }
+
+  .heading2 {
+    @apply text-black text-xl font-semibold mb-4;
+  }
+}
+
+html {
+  @apply motion-safe:scroll-smooth;
+}
+
+body {
+  @apply /* antialiased */ py-12 sm:py-24 md:py-32 text-neutral-700;
+  overflow: scroll; /* Show scrollbars */
+}
+
+::selection {
+  @apply bg-neutral-200 dark:bg-neutral-600;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.g {
+  @apply text-neutral-400;
+}
+
+.link {
+  @apply underline underline-offset-[3px] decoration-neutral-400 dark:decoration-neutral-500;
+  @apply hover:text-black hover:decoration-black transition-colors;
+  @apply dark:hover:text-white dark:hover:decoration-white;
+}
+
+@keyframes flyIn {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flyOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(5px);
+    opacity: 0;
+  }
+}
+
+.g {
+  @apply text-neutral-400;
+}
+/* Correction for vertical navigation links on mobile. */
+@media (max-width: 420px) {
+  #pepsi-is {
+    @apply -mt-10;
+  }
+}
