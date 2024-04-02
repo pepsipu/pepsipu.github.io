@@ -21,8 +21,8 @@ type Props = {
   meta: PostInfo;
 };
 
-const { post, meta } = Astro.props;
-const { Content } = await post.render();
+const { post, meta }: Props = Astro.props;
+const { Content } = await (post as any).render();
 ---
 
 <Site>
