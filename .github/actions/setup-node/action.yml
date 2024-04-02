@@ -1,0 +1,17 @@
+name: "Setup Node CI"
+description: "Setup Node.js and install dependencies"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: pnpm/action-setup@v3
+      with:
+        version: 8
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+        cache: "pnpm"
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install
