@@ -5,16 +5,18 @@ import { getPostInfo, type PostInfo } from "../../lib/post";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post: CollectionEntry<"blog">) => {
-    const postData = getPostInfo(post);
-    return {
-      params: { slug: postData.slug },
-      props: {
-        post,
-        meta: postData,
-      },
-    };
-  });
+  return posts
+    .filter((post: CollectionEntry<"blog">) => post.data.published)
+    .map((post) => {
+      const postData = getPostInfo(post);
+      return {
+        params: { slug: postData.slug },
+        props: {
+          post,
+          meta: postData,
+        },
+      };
+    });
 }
 type Props = {
   post: CollectionEntry<"blog">;
