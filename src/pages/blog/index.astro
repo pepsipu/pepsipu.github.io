@@ -2,14 +2,14 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Site from "../../layouts/Site.astro";
 import PostList from "../../components/PostList.svelte";
-import { getPostInfo } from "../../lib/post";
+import { getPostInfo, type PostInfo } from "../../lib/post";
 
-const posts = (await getCollection("blog"))
+const posts: PostInfo[] = (await getCollection("blog"))
   .filter((post: CollectionEntry<"blog">) => post.data.published)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .map(getPostInfo);
 
-const tagSet = posts.reduce((acc, post) => {
+const tagSet: Set<string> = posts.reduce((acc, post) => {
   post.tags.forEach((tag) => {
     acc.add(tag);
   });
