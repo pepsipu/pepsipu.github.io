@@ -5,14 +5,12 @@ import PostList from "../../components/PostList.svelte";
 import { getPostInfo, type PostInfo } from "../../lib/post";
 
 const posts: PostInfo[] = (await getCollection("blog"))
-  .filter((post: any) => post.data.published)
-  .sort((a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf())
+  .filter((post) => post.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .map(getPostInfo);
 
 const tagSet: Set<string> = posts.reduce((acc, post) => {
-  post.tags.forEach((tag) => {
-    acc.add(tag);
-  });
+  post.tags.forEach((tag) => acc.add(tag));
   return acc;
 }, new Set<string>());
 

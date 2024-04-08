@@ -2,7 +2,6 @@
   import PostEntry from "./PostEntry.svelte";
   import { type PostInfo, getClassForTag } from "../lib/post";
   import { fly } from "svelte/transition";
-  import { sineIn } from "svelte/easing";
 
   export let tags: string[];
   export let posts: PostInfo[];

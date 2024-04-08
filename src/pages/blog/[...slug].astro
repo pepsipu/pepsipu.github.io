@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts
     .filter((post: CollectionEntry<"blog">) => post.data.published)
-    .map((post) => {
+    .map((post: CollectionEntry<"blog">) => {
       const postData = getPostInfo(post);
       return {
         params: { slug: postData.slug },
@@ -24,7 +24,7 @@ type Props = {
 };
 
 const { post, meta }: Props = Astro.props;
-const { Content } = await (post as any).render();
+const { Content } = await post.render();
 ---
 
 <Site>

@@ -1,5 +1,5 @@
 import Site from "../layouts/Site.astro";
-import ProjectList from "../components/ProjectList.astro";
+import Project from "../components/Project.astro";
 
 export const components = {
   a: (props) => (
@@ -9,47 +9,7 @@ export const components = {
   ),
 };
 
-export const projects = [
-  {
-    name: "xinOS",
-    href: "https://github.com/pepsipu/xinOS-old",
-    desc: "hyperfast operating system for retro games",
-  },
-  {
-    name: "aski",
-    href: "https://github.com/pepsipu/aski",
-    desc: "high abstraction assembler with types",
-    aside: "Replit Language Jam finalist",
-  },
-  {
-    name: "OSpaint",
-    href: "https://github.com/pepsipu/OSpaint",
-    desc: "MSpaint as an operating system",
-    aside: "CodeDayLA best in class winner",
-  },
-  {
-    name: "warpalloc",
-    href: "https://github.com/pepsipu/warpalloc",
-    desc: "portable memory allocator in assembly",
-  },
-  {
-    name: "ramenbox",
-    href: "https://github.com/pepsipu/ramenbox",
-    desc: "6502 emulator + game console",
-    aside: "CodeDay best hardware winner",
-  },
-];
-
-<Site title="Sammy Hajhamid" description="unfathomably based" openGraph={{
-  title: "Sammy Hajhamid",
-  description: "unfathomably based",
-  url: "https://pepsipu.com",
-  type: "profile",
-  profile: {
-    firstName: "Sammy",
-    lastName: "Hajhamid",
-    username: "pepsipu",
-}}}>
+<Site>
   <div class="text-xl font-light mb-8 text-black"
     id="pepsi-is">
     <span class="g">likes</span> computers <span class="g">&</span> math
@@ -67,7 +27,11 @@ export const projects = [
 
     <div class="leading-snug space-y-4">
       Some of my favorite personal projects include:
-      <ProjectList projects={projects} />
+      <Project name="xinOS" href="https://github.com/pepsipu/xinOS-old" desc="hyperfast operating system for retro games" />
+      <Project name="aski" href="https://github.com/pepsipu/aski" desc="high abstraction assembler with types" aside="Replit Language Jam finalist" />
+      <Project name="OSpaint" href="https://github.com/pepsipu/OSpaint" desc="MSpaint as an operating system" aside="CodeDayLA best in class winner" />
+      <Project name="warpalloc" href="https://github.com/pepsipu/warpalloc" desc="portable memory allocator in assembly" />
+      <Project name="ramenbox" href="https://github.com/pepsipu/ramenbox" desc="6502 emulator + game console" aside="CodeDay best hardware winner" />
     </div>
 
     I play Capture-the-Flag competitions with the [United States' #1 competitive cybersecurity team](https://ctftime.org/stats/2022/US),
