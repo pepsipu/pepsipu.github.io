@@ -1,22 +1,8 @@
-name: CI
+name: pages-build-deployment
 
 on: push
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-node
-      - run: pnpm check
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-node
-      - run: pnpm lint
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -24,11 +10,24 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.ACCESS_TOKEN }}
-      - uses: ./.github/actions/setup-node
-      - run: pnpm build
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: install node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: install dependencies
+        shell: bash
+        run: pnpm install
+
+      - name: build site
+        run: pnpm build
+
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
   deploy:
     needs: build
     permissions:
