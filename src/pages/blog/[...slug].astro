@@ -4,19 +4,17 @@ import Site from "../../layouts/Site.astro";
 import { getPostInfo, type PostInfo } from "../../lib/post";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts
-    .filter((post: CollectionEntry<"blog">) => post.data.published)
-    .map((post: CollectionEntry<"blog">) => {
-      const postData = getPostInfo(post);
-      return {
-        params: { slug: postData.slug },
-        props: {
-          post,
-          meta: postData,
-        },
-      };
-    });
+  const posts = await getCollection("blog", (post) => post.data.published);
+  return posts.map((post) => {
+    const postData = getPostInfo(post);
+    return {
+      params: { slug: postData.slug },
+      props: {
+        post,
+        meta: postData,
+      },
+    };
+  });
 }
 type Props = {
   post: CollectionEntry<"blog">;

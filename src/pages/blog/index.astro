@@ -2,17 +2,16 @@
 import { getCollection } from "astro:content";
 import Site from "../../layouts/Site.astro";
 import PostList from "../../components/PostList.svelte";
-import { getPostInfo, type PostInfo } from "../../lib/post";
+import { getPostInfo } from "../../lib/post";
 
-const posts: PostInfo[] = (await getCollection("blog"))
-  .filter((post) => post.data.published)
+const posts = (await getCollection("blog", (post) => post.data.published))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .map(getPostInfo);
 
-const tagSet: Set<string> = posts.reduce((acc, post) => {
+const tagSet = posts.reduce<Set<string>>((acc, post) => {
   post.tags.forEach((tag) => acc.add(tag));
   return acc;
-}, new Set<string>());
+}, new Set());
 
 // make sure notes goes first
 tagSet.delete("notes");

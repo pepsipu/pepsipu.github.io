@@ -1,7 +1,4 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "strictNullChecks": true
-  },
+  "extends": "astro/tsconfigs/strictest",
   "exclude": ["./dist"]
 }
