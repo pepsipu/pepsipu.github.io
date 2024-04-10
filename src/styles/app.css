@@ -12,10 +12,6 @@
   .layout-md {
     @apply max-w-screen-md mx-auto px-4 sm:px-6;
   }
-
-  .heading2 {
-    @apply text-black text-xl font-semibold mb-4;
-  }
 }
 
 html {
@@ -67,9 +63,6 @@ body {
   }
 }
 
-.g {
-  @apply text-neutral-400;
-}
 /* Correction for vertical navigation links on mobile. */
 @media (max-width: 420px) {
   #pepsi-is {

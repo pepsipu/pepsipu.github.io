@@ -13,12 +13,14 @@ const anim = {
     name: "flyOut",
     duration: "350ms",
     easing: "ease",
+    fillMode: "forwards",
   },
   new: {
     name: "flyIn",
     duration: "350ms",
-    delay: "360ms",
+    delay: "350ms",
     easing: "ease",
+    fillMode: "backwards",
   },
 };
 
@@ -28,7 +30,7 @@ const animation = {
 };
 ---
 
-<html>
+<html transition:animate="none">
   <Head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico" />
@@ -39,7 +41,7 @@ const animation = {
       src="https://analytics.us.umami.is/script.js"
       data-website-id="94761bdd-495d-4e1c-a2c6-da35619076b6"></script>
     <ViewTransitions />
-    <Header transition:animate="none" />
+    <Header />
   </Head>
 
   <body>

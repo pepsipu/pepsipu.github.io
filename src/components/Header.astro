@@ -5,21 +5,16 @@ const links = [
 ];
 const pathname = Astro.url.pathname;
 const link = links.find(({ href }) => pathname.startsWith(href));
-
-let pageTitle: string | null = null;
-if (link) {
-  pageTitle = link.name.charAt(0).toUpperCase() + link.name.slice(1);
-}
 ---
 
 <header class="layout-md flex justify-between items-start mb-3 sm:mb-1">
   <h1 class="font-bold text-black text-2xl">
     <a href="/">Sammy Hajhamid</a>
     {
-      pageTitle && (
+      link && (
         <span class="page-title">
           <span class="text-neutral-400">—</span>
-          {pageTitle}
+          {link.name.charAt(0).toUpperCase() + link.name.slice(1)}
         </span>
       )
     }
