@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Site from "../../layouts/Site.astro";
-import PostList from "../../components/PostList.svelte";
+import PostList from "../../components/PostList.tsx";
 import { getPostInfo } from "../../lib/post";
 
 const posts = (await getCollection("blog", (post) => post.data.published))
@@ -19,5 +19,5 @@ const tags: string[] = ["notes", ...Array.from(tagSet).sort()];
 ---
 
 <Site>
-  <PostList {posts} {tags} client:load />
+  <PostList posts={posts} tags={tags} client:load />
 </Site>
