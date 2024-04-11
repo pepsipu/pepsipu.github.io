@@ -1,23 +1,25 @@
 ---
-import { getCollection } from "astro:content";
 import Site from "../../layouts/Site.astro";
-import PostList from "../../components/PostList.tsx";
-import { getPostInfo } from "../../lib/post";
 
-const posts = (await getCollection("blog", (post) => post.data.published))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .map(getPostInfo);
+import PostEntry from "../../components/PostEntry.astro";
+import TagList from "../../components/TagList.astro";
+import { getPublishedPosts, getTags } from "../../lib/posts";
 
-const tagSet = posts.reduce<Set<string>>((acc, post) => {
-  post.tags.forEach((tag) => acc.add(tag));
-  return acc;
-}, new Set());
+const posts = await getPublishedPosts();
+const listedPosts = posts.filter(({ data }) => !data.unlisted);
 
-// make sure notes goes first
-tagSet.delete("notes");
-const tags: string[] = ["notes", ...Array.from(tagSet).sort()];
+const tags = await getTags();
+const listedTags = tags.filter(({ data }) => !data.unlisted);
 ---
 
 <Site>
-  <PostList posts={posts} tags={tags} client:load />
+  <section class="transition py-12">
+    <div class="flex justify-between mb-1">
+      <div class="flex text-lg">Blog Posts</div>
+      <TagList tags={listedTags} />
+    </div>
+    <div class="grid gap-y-3">
+      {listedPosts.map((post) => <PostEntry post={post} />)}
+    </div>
+  </section>
 </Site>

@@ -23,14 +23,6 @@ body {
   overflow: scroll; /* Show scrollbars */
 }
 
-::selection {
-  @apply bg-neutral-200 dark:bg-neutral-600;
-}
-
-.dark {
-  color-scheme: dark;
-}
-
 .g {
   @apply text-neutral-400;
 }

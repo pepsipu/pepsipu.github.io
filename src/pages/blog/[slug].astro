@@ -1,28 +1,25 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
 import Site from "../../layouts/Site.astro";
-import { getPostInfo, type PostInfo } from "../../lib/post";
+import { getEntryBySlug } from "astro:content";
+import { getPublishedPosts, formatPost } from "../../lib/posts";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", (post) => post.data.published);
-  return posts.map((post) => {
-    const postData = getPostInfo(post);
-    return {
-      params: { slug: postData.slug },
-      props: {
-        post,
-        meta: postData,
-      },
-    };
-  });
+  const posts = await getPublishedPosts();
+  return posts.map(({ slug }) => ({
+    params: { slug },
+  }));
 }
-type Props = {
-  post: CollectionEntry<"blog">;
-  meta: PostInfo;
-};
 
-const { post, meta }: Props = Astro.props;
+const { slug } = Astro.params;
+const post = await getEntryBySlug("blog", slug);
+if (!post.data.published) {
+  return {
+    status: 404,
+  };
+}
+
 const { Content } = await post.render();
+const { rawTitle, rawDescription, tagList, formattedDate } = formatPost(post);
 ---
 
 <Site>
@@ -30,17 +27,17 @@ const { Content } = await post.render();
     <hr class="mb-5" />
     <div class="mb-1.5">
       <div class="text-2xl text-black sm:mb-1">
-        <Fragment set:html={meta.title} />
+        <Fragment set:html={rawTitle} />
       </div>
       <div class="text-lg leading-snug font-light text-black sm:mb-1">
-        <Fragment set:html={meta.description} />
+        <Fragment set:html={rawDescription} />
       </div>
       <div class="flex justify-between items-start mb-3 sm:mb-1">
         <div class="text-sm text-neutral-400">
-          {meta.date}
+          {formattedDate}
         </div>
         <div class="text-sm text-neutral-400">
-          {meta.tags.join(", ")}
+          {tagList}
         </div>
       </div>
       <hr class="mb-6 mt-5" />
