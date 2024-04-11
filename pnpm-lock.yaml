@@ -62,12 +62,6 @@ dependencies:
   lucide-astro:
     specifier: ^0.344.0
     version: 0.344.0(astro@4.4.12)
-  lucide-solid:
-    specifier: ^0.367.0
-    version: 0.367.0(solid-js@1.8.16)
-  lucide-svelte:
-    specifier: ^0.344.0
-    version: 0.344.0(svelte@4.2.12)
   marked:
     specifier: ^12.0.1
     version: 12.0.1
@@ -3639,22 +3633,6 @@ packages:
       astro: '>=2.7.1'
     dependencies:
       astro: 4.4.12(typescript@5.3.3)
-    dev: false
-
-  /lucide-solid@0.367.0(solid-js@1.8.16):
-    resolution: {integrity: sha512-CDK58q2jmHcaV3UXJiOO3xCGyDwcXOeBQQ/ivIiyQn3BuAYHFpH77Ou5JYoMyHZuek7OA+FsV6nUmnnJv95mrQ==}
-    peerDependencies:
-      solid-js: ^1.4.7
-    dependencies:
-      solid-js: 1.8.16
-    dev: false
-
-  /lucide-svelte@0.344.0(svelte@4.2.12):
-    resolution: {integrity: sha512-OB/iazftjl2w+vpH7WJqbhHONoMqUT6aaeYvu1BQSgvc7+CKXByu4xvbI7RMOJykaiF/u3LAhyd2ucYBj+rEZQ==}
-    peerDependencies:
-      svelte: ^3 || ^4 || ^5.0.0-next.42
-    dependencies:
-      svelte: 4.2.12
     dev: false
 
   /lunr@2.3.9:
