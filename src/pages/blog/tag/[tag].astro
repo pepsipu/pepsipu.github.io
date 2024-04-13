@@ -1,12 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Site from "../../../layouts/Site.astro";
-import {
-  formatPost,
-  getPublishedPosts,
-} from "../../../lib/posts";
+import { getPublishedPosts } from "../../../lib/posts";
 
-import { ArrowUpRight } from "lucide-astro";
+import PostEntry from "../../../components/PostEntry.astro";
 
 export async function getStaticPaths() {
   const tags = await getCollection("tags");
@@ -27,39 +24,8 @@ const posts = (await getPublishedPosts()).filter(({ data }) =>
       <div class="flex text-lg">Blog Posts</div>
       <div>{tag}</div>
     </div>
-    <table class="table-fixed">
-      <tbody>
-        {
-          posts.map((post) => {
-            const { rawTitle, rawDescription, formattedDate } =
-              formatPost(post);
-
-            return (
-              <a
-                href={`/blog/${post.slug}`}
-                class="block -mx-3 px-3 py-2 hover:bg-neutral-100"
-              >
-                    <div class="mb-0 flex justify-between w-full">
-                      <div class="text-md text-black">
-                        <Fragment set:html={rawTitle} />
-                        <ArrowUpRight size={18} class="inline text-neutral-400" />
-                      </div>
-                      <div class="text-sm">
-                        {formattedDate}
-                      </div>
-                    </div>
-
-                    <div class="flex justify-between items-start">
-                      <div class="text-md leading-snug text-neutral-500">
-                        <Fragment set:html={rawDescription} />
-                      </div>
-                    </div>
-                  </div>
-              </a>
-            );
-          })
-        }
-      </tbody>
-    </table>
+    <div class="grid gap-y-3">
+      {posts.map((post) => <PostEntry post={post} />)}
+    </div>
   </section>
 </Site>

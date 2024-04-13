@@ -14,11 +14,11 @@ const listedTags = tags.filter(({ data }) => !data.unlisted);
 
 <Site>
   <section class="transition py-12">
-    <div class="flex justify-between mb-1">
+    <div class="flex justify-between mb-2">
       <div class="flex text-lg">Blog Posts</div>
       <TagList tags={listedTags} />
     </div>
-    <div class="grid gap-y-3">
+    <div class="grid gap-y-2">
       {listedPosts.map((post) => <PostEntry post={post} />)}
     </div>
   </section>
