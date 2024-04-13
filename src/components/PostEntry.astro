@@ -20,7 +20,7 @@ const { rawTitle, rawDescription, tagList, formattedDate } = formatPost(post);
       <Fragment set:html={rawTitle} />
       <ArrowUpRight size={18} class="inline text-neutral-400" />
     </div>
-    <div class="text-sm text-black">
+    <div class="text-xs text-black whitespace-nowrap my-auto">
       {formattedDate}
     </div>
   </div>
@@ -30,7 +30,7 @@ const { rawTitle, rawDescription, tagList, formattedDate } = formatPost(post);
       <Fragment set:html={rawDescription} />
     </div>
     <div>
-      <div class="text-sm text-black">{tagList.join(", ")}</div>
+      <div class="text-xs text-black">{tagList.join(", ")}</div>
     </div>
   </div>
 </a>
