@@ -16,21 +16,23 @@ const { rawTitle, rawDescription, tagList, formattedDate } = formatPost(post);
   class="block -mx-3 px-3 py-3 hover:bg-neutral-100"
 >
   <div class="mb-0 flex justify-between w-full">
-    <div class="text-md text-black">
+    <div class="text-lg text-black">
       <Fragment set:html={rawTitle} />
       <ArrowUpRight size={18} class="inline text-neutral-400" />
-    </div>
-    <div class="text-xs text-black whitespace-nowrap my-auto">
-      {formattedDate}
     </div>
   </div>
 
   <div class="flex justify-between items-start">
-    <div class="text-sm leading-snug text-neutral-500">
-      <Fragment set:html={rawDescription} />
+    <div class="text-sm whitespace-nowrap my-auto">
+      {formattedDate}
     </div>
     <div>
-      <div class="text-xs text-black">{tagList.join(", ")}</div>
+      <div class="text-sm text-black">{tagList.join(", ")}</div>
+    </div>
+  </div>
+  <div class="flex justify-between items-start">
+    <div class="text-md leading-snug text-neutral-500">
+      <Fragment set:html={rawDescription} />
     </div>
   </div>
 </a>
