@@ -10,6 +10,8 @@ const listedPosts = posts.filter(({ data }) => !data.unlisted);
 
 const tags = await getTags();
 const listedTags = tags.filter(({ data }) => !data.unlisted);
+
+import Plot from "../../components/blog/Plot.svelte";
 ---
 
 <Site>
@@ -22,4 +24,5 @@ const listedTags = tags.filter(({ data }) => !data.unlisted);
       {listedPosts.map((post) => <PostEntry post={post} />)}
     </div>
   </section>
+  <Plot client:only name="meow" data={[1, 2, 3]} />
 </Site>
