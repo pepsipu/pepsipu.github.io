@@ -1,6 +1,10 @@
 import Site from "../layouts/Site.astro";
 import Project from "../components/Project.astro";
 
+import { Image } from "astro:assets";
+
+import EndPhoto from "../images/roll.png";
+
 export const components = {
   a: (props) => (
     <a {...props} class="link">
@@ -16,10 +20,9 @@ export const components = {
   </div>
 
   <div class="text-lg space-y-8">
-    I'm currently an undergraduate at [Caltech](https://www.caltech.edu/). Previously, I was the course instructor of [595G, Seminar in Computer Security](https://cs595.seclab.cs.ucsb.edu/)
-    at the University of California, Santa Barbara, a founding
-    member and blockchain security auditor at
-    [OtterSec](https://osec.io), and a quantitative researcher at [Zellic](https://zellic.io).
+    I'm currently an undergraduate at [Caltech](https://www.caltech.edu/). Previously, I was a quantitative researcher at [Zellic](https://zellic.io) and a founding
+    member of the blockchain security firm
+    [OtterSec](https://osec.io).
 
     I'd like to explore as much computer science and pure mathematics as I
     can. I enjoy making embedded systems, where programmers have creative freedom over
@@ -41,10 +44,12 @@ export const components = {
     Council as well as blockchains like [Solana](https://solana.com), [Sui](https://sui.io/), and [Aptos](https://aptoslabs.com) to make the internet safer.
 
     As a researcher, I've done guest lectures on exploitation at the
-    [HOPE Conference](https://www.youtube.com/watch?v=VYr0Ut8n0bg), Carnegie Mellon University, and EPFL Innovation Park. This summer, I'm
-    working with the picoCTF team at [Carnegie Mellon University's REU](https://www.cmu.edu/scs/s3d/reuse/). One day, I hope to be a professor.
+    [HOPE Conference](https://www.youtube.com/watch?v=VYr0Ut8n0bg), EPFL Innovation Park, and Carnegie Mellon University. Previously, I was a researcher at [Carnegie Mellon University's REUSE](https://www.cmu.edu/scs/s3d/reuse/) and course instructor of [595G, Seminar in Computer Security](https://cs595.seclab.cs.ucsb.edu/)
+    at the University of California, Santa Barbara. One day, I hope to be a professor.
 
     I write about interesting technical problems and ideas on [my blog](/blog).
+
+    <Image src={EndPhoto} alt="the fellow" size={8} class="mx-auto"/>
 
   </div>
 </Site>
