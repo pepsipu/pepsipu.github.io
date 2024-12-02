@@ -1,10 +1,10 @@
 ---
 import Site from "../../layouts/Site.astro";
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 import { getPublishedPosts, formatPost } from "../../lib/posts";
 
 import "remark-alerts/styles/github-colors-light.css";
-import "remark-alerts/styles/github-colors-dark-media.css";
+// import "remark-alerts/styles/github-colors-dark-media.css";
 import "remark-alerts/styles/github-base.css";
 
 export async function getStaticPaths() {
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const post = await getEntryBySlug("blog", slug);
+const post = await getEntry("blog", slug);
 if (!post.data.published) {
   return {
     status: 404,
