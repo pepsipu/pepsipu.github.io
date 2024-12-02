@@ -101,6 +101,9 @@ importers:
       slug:
         specifier: ^9.0.0
         version: 9.0.0
+      slugify:
+        specifier: ^1.6.6
+        version: 1.6.6
       strftime:
         specifier: ^0.10.2
         version: 0.10.2
@@ -3888,6 +3891,10 @@ packages:
   slug@9.0.0:
     resolution: {integrity: sha512-ixytnHlpHPWM56heaGgYe/M8tDAcpJcsg/zBuyElbFDOORzMGOeP3Te6iJBRVYu3WQEiWLQPb70Gh9ig/sZgGQ==}
     hasBin: true
+
+  slugify@1.6.6:
+    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
+    engines: {node: '>=8.0.0'}
 
   smartypants@0.2.2:
     resolution: {integrity: sha512-TzobUYoEft/xBtb2voRPryAUIvYguG0V7Tt3de79I1WfXgCwelqVsGuZSnu3GFGRZhXR90AeEYIM+icuB/S06Q==}
@@ -9515,6 +9522,8 @@ snapshots:
       robust-orientation: 1.2.1
 
   slug@9.0.0: {}
+
+  slugify@1.6.6: {}
 
   smartypants@0.2.2: {}
 
