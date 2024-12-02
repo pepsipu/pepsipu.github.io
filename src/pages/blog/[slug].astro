@@ -3,6 +3,10 @@ import Site from "../../layouts/Site.astro";
 import { getEntryBySlug } from "astro:content";
 import { getPublishedPosts, formatPost } from "../../lib/posts";
 
+import "remark-alerts/styles/github-colors-light.css";
+import "remark-alerts/styles/github-colors-dark-media.css";
+import "remark-alerts/styles/github-base.css";
+
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
   return posts.map(({ slug }) => ({
