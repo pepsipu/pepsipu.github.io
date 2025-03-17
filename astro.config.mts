@@ -1,6 +1,5 @@
 import { defineConfig, sharpImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 
 import remarkMath from "remark-math";
