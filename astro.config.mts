@@ -13,7 +13,7 @@ import rehypeKatex from "rehype-katex";
 // https://astro.build/config
 export default defineConfig({
   site: "https://pepsipu.com",
-  integrations: [tailwind(), mdx(), svelte()],
+  integrations: [tailwind(), mdx()],
   markdown: {
     remarkPlugins: [
       remarkMath,
@@ -29,8 +29,5 @@ export default defineConfig({
   },
   prefetch: {
     prefetchAll: true,
-  },
-  experimental: {
-    contentCollectionCache: true,
   },
 });
