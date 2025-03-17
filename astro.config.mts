@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
@@ -23,6 +23,9 @@ export default defineConfig({
     ],
     rehypePlugins: [rehypeKatex],
     gfm: true,
+  },
+  image: {
+    service: sharpImageService(),
   },
   prefetch: {
     prefetchAll: true,
