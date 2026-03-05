@@ -56,6 +56,10 @@ const link = links.find(({ href }) => pathname.startsWith(href));
     }
   
     @media (max-width: 420px) {
+      header {
+        @apply relative z-10;
+      }
+
       nav {
         @apply flex-col items-end space-x-0;
       }
