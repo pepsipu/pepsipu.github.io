@@ -12,30 +12,9 @@
   <div class="row">
     <span>Email</span>
     <hr />
-    <a
-      id="link-conversion"
-      class="link"
-      rel="nofollow noindex"
-      href="to-sh-pepsi-pw/"
-    >
-      email
-    </a>
+    <a class="link" href="mailto:sh@pepsi.pw">sh@pepsi.pw</a>
   </div>
 </footer>
-
-<script is:inline>
-  const link = document.getElementById("link-conversion");
-
-  const email = link
-    .getAttribute("href")
-    .replace("to-", "")
-    .replace("-", "@")
-    .replace("-", ".")
-    .replace("/", "");
-
-  link.href = `mailto:${email}`;
-  link.textContent = email;
-</script>
 
 <style lang="postcss">
 	.row {
