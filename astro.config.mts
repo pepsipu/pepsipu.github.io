@@ -1,6 +1,7 @@
 import { defineConfig, sharpImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
+import svelte from "@astrojs/svelte";
 
 import remarkMath from "remark-math";
 import remarkSmartypants from "remark-smartypants";
@@ -12,7 +13,7 @@ import rehypeKatex from "rehype-katex";
 // https://astro.build/config
 export default defineConfig({
   site: "https://pepsipu.com",
-  integrations: [tailwind(), mdx()],
+  integrations: [tailwind(), svelte(), mdx()],
   markdown: {
     remarkPlugins: [
       remarkMath,
@@ -28,5 +29,8 @@ export default defineConfig({
   },
   prefetch: {
     prefetchAll: true,
+  },
+  server: {
+    allowedHosts: ["era-cigarette-warned-peaceful.trycloudflare.com"],
   },
 });
