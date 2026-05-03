@@ -9,8 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+    "lint": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
+    "format": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
