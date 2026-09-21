@@ -18,6 +18,9 @@ const listedTags = tags.filter(({ data }) => !data.unlisted);
       <div class="flex text-lg">Blog Posts</div>
       <TagList tags={listedTags} />
     </div>
+    <p class="mb-2">
+      <a class="link" href="https://buttondown.com/pepsipu">Subscribe</a>
+    </p>
     <div class="grid gap-y-2">
       {listedPosts.map((post) => <PostEntry post={post} />)}
     </div>
